@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+/* DEFINICIÓN DEL TEMA PARA ESTE ARCHIVO */
+@theme {
+  --color-primary: #050505;
+  --color-secondary: #00ff99;
+}
+
+/* --- ESTILOS DEL NAVBAR --- */
+
+.navbar-container {
+  /* Ahora 'bg-primary/80' funcionará porque definimos el color arriba */
+  @apply fixed top-0 left-0 w-full z-50 bg-primary/80 backdrop-blur-md border-b border-white/20;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-content {
+  @apply max-w-7xl mx-auto px-6 h-20 flex justify-between items-center;
+}
+
+/* --- LOGO Y TÍTULO --- */
+.brand-group {
+  @apply flex flex-col justify-center select-none cursor-pointer;
+}
+
+.brand-group:hover .brand-title {
+  transform: scale(1.05);
+}
+
+.brand-group:hover .brand-subtitle {
+  @apply text-white;
+}
+
+.brand-title {
+  @apply text-3xl md:text-4xl font-extrabold tracking-tight text-white leading-none transition-all duration-300;
+}
+
+.brand-highlight {
+  @apply text-secondary ml-2;
+  /* Efecto glow personalizado */
+  filter: drop-shadow(0 0 15px rgba(0, 255, 153, 0.6));
+}
+
+.brand-subtitle {
+  @apply text-[10px] md:text-[11px] font-medium text-gray-500 tracking-[0.3em] uppercase mt-1 ml-1 transition-colors;
+}
+
+/* --- ENLACES SOCIALES --- */
+.social-nav {
+  @apply flex items-center gap-5;
+}
+
+.social-link {
+  @apply flex items-center gap-3 transition-transform duration-300;
+}
+
+.social-link:hover {
+  transform: translateY(-4px);
+}
+
+/* Círculo del icono */
+.icon-box {
+  @apply flex items-center justify-center w-10 h-10 rounded-full 
+         bg-white/5 border border-white/10
+         text-green-500
+         transition-all duration-300 backdrop-blur-sm;
+}
+
+/* Efectos hover */
+.social-link:hover .icon-box {
+  @apply bg-green-500/10 border-green-500;
+  filter: drop-shadow(0 0 10px rgba(34, 197, 94, 0.5));
+}
+
+.link-text {
+  @apply hidden md:block text-sm font-medium text-white tracking-wide;
+}

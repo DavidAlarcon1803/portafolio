@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+@theme {
+  --color-secondary: #00ff99;
+  --color-green-dark: #16a34a;
+}
+
+/* --- ESTILOS GENERALES DE SECCIÓN --- */
+.section-container {
+  @apply mt-0 py-12 px-6 max-w-7xl mx-auto;
+}
+
+.section-header {
+  @apply mb-12;
+}
+
+.section-title-wrapper {
+  @apply text-4xl font-bold mb-4 flex items-center gap-3 text-white;
+}
+
+.section-hash {
+  @apply text-secondary;
+}
+
+.section-line {
+  @apply w-20 h-1 bg-gradient-to-r from-secondary to-transparent rounded-full;
+}
+
+.section-description {
+  @apply text-gray-400 mt-4 max-w-2xl;
+}
+
+/* --- TARJETAS (NEON CARD) --- */
+.card-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-8;
+}
+
+.neon-card {
+  @apply relative overflow-hidden rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm transition-all duration-300;
+}
+
+.neon-card:hover {
+  @apply border-secondary/50;
+}
+
+.card-title {
+  @apply text-xl font-semibold mb-3 text-white transition-colors;
+}
+
+.neon-card:hover .card-title {
+  @apply text-secondary;
+}
+
+.card-icon {
+  @apply text-5xl mb-4 transition-transform duration-300 inline-block;
+}
+
+.neon-card:hover .card-icon {
+  transform: scale(1.1);
+}
+
+.card-hover-gradient {
+  @apply absolute inset-0 rounded-xl bg-gradient-to-r from-secondary/0 via-secondary/0 to-secondary/0 pointer-events-none transition-all duration-300;
+}
+
+.neon-card:hover .card-hover-gradient {
+  @apply from-secondary/5 via-secondary/5 to-secondary/5;
+}
+
+/* --- TAGS / CHIPS --- */
+.tech-pill {
+  @apply px-3 py-1 rounded-full text-xs transition-colors border;
+  @apply bg-secondary/10 text-secondary border-secondary/30;
+}
+
+.tech-pill:hover {
+  @apply bg-secondary/20;
+}
+
+/* --- TIMELINE --- */
+.timeline-wrapper {
+  @apply relative;
+}
+
+.timeline-line {
+  @apply absolute left-0 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-secondary/50 to-transparent;
+}
+
+.timeline-item {
+  @apply relative mb-12 last:mb-0;
+}
+
+.timeline-dot {
+  @apply absolute -left-3 md:left-1/2 md:-translate-x-1/2 top-0 w-6 h-6 rounded-full bg-slate-950 border-2 border-secondary flex items-center justify-center z-10;
+}
+
+.timeline-inner-dot {
+  @apply w-2 h-2 rounded-full bg-secondary;
+}
+
+.timeline-content {
+  @apply ml-8 md:ml-0 md:w-1/2;
+}
+
+.timeline-left {
+  @apply md:mr-auto md:pr-12;
+}
+
+.timeline-right {
+  @apply md:ml-auto md:pl-12;
+}
+
+/* --- BOTONES --- */
+.btn-primary {
+  @apply inline-flex items-center gap-2 px-8 py-3 rounded-lg font-semibold transition-colors duration-300;
+  @apply bg-secondary text-slate-950 hover:bg-[#00cc7a];
+}
+
+.btn-outline {
+  @apply inline-flex items-center gap-2 px-6 py-3 rounded-lg border font-medium transition-all duration-300;
+  @apply border-secondary/30 text-secondary hover:bg-secondary/10 hover:border-secondary/50;
+}
