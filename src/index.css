@@ -2,19 +2,16 @@
 
 @layer base {
   :root {
-    /* --- TU PALETA DE COLORES RE-MAPEDA --- */
-    
     /* Fondo y Texto */
-    --background: 0 0% 2%;      /* #050505 (Tu negro profundo) */
+    --background: 0 0% 2%;      /* #050505 */
     --foreground: 0 0% 100%;    /* #ffffff */
 
-    /* Color Principal (Tu Verde Neón #00ff99) */
-    /* HSL aproximado: 156, 100%, 50% */
+    /* Tu Verde Neón (#00ff99) */
     --primary: 156 100% 50%;
-    --primary-foreground: 0 0% 0%; /* Texto negro sobre el verde */
+    --primary-foreground: 0 0% 0%;
 
-    /* Elementos secundarios (Tarjetas, bordes) */
-    --card: 0 0% 4%;            /* Un poco más claro que el fondo */
+    /* Elementos secundarios */
+    --card: 0 0% 4%;
     --card-foreground: 0 0% 100%;
     
     --popover: 0 0% 4%;
@@ -35,7 +32,7 @@
     /* Bordes sutiles */
     --border: 0 0% 20%; 
     --input: 0 0% 20%;
-    --ring: 156 100% 50%; /* El anillo de enfoque será verde */
+    --ring: 156 100% 50%;
 
     --radius: 0.5rem;
   }
@@ -43,14 +40,14 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border; /* Esta es la línea que fallaba */
   }
   body {
     @apply bg-background text-foreground;
   }
 }
 
-/* --- TU SCROLLBAR PERSONALIZADO (SE MANTIENE) --- */
+/* --- TU SCROLLBAR PERSONALIZADO --- */
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: #050505; border-left: 1px solid rgba(255, 255, 255, 0.05); }
 ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 5px; border: 2px solid #050505; transition: all 0.3s ease; }
