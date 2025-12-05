@@ -1,37 +1,22 @@
-import React from 'react';
-import '../styles/Sections.css';
+import React from "react";
+import { Link } from "react-router-dom"; // <--- IMPORTANTE: Importar Link
+import "../styles/Sections.css";
 
 const ProjectsSection = () => {
   const projects = [
     {
       id: 1,
       title: "CONFIDENCIAL",
-      description: "",
-      technologies: [],
+      description: "Sistema de gestión interna con autenticación segura.",
+      technologies: ["React", "Python", "Seguridad"],
+      hasButton: true, // <--- Asegúrate de poner esto en true para probar
     },
-    // ... otros proyectos (puedes copiar los mismos de antes)
-    //  {
-    //   id: 2,
-    //   title: "App de Gestión de Tareas",
-    //   description: "Aplicación colaborativa con actualizaciones en tiempo real y flujos de trabajo personalizables.",
-    //   technologies: ["Next.js", "TypeScript", "MongoDB", "Socket.io"],
-    // },
-    // {
-    //   id: 3,
-    //   title: "Dashboard de Analíticas",
-    //   description: "Panel de control para seguimiento de métricas con visualizaciones interactivas.",
-    //   technologies: ["React", "D3.js", "Express", "MySQL"],
-    // },
-    // {
-    //   id: 4,
-    //   title: "Chatbot IA",
-    //   description: "Asistente inteligente potenciado por machine learning y procesamiento de lenguaje natural.",
-    //   technologies: ["Python", "FastAPI", "TensorFlow", "React"],
-    // },
+    // ... tus otros proyectos
   ];
 
   return (
     <section className="section-container">
+      {/* ... (Header igual que antes) ... */}
       <div className="section-header">
         <h2 className="section-title-wrapper">
           <span className="section-hash">#</span>
@@ -44,32 +29,43 @@ const ProjectsSection = () => {
         {projects.map((project) => (
           <div key={project.id} className="neon-card">
             <div className="p-6">
-              {/* USAMOS LA NUEVA CLASE AQUÍ */}
-              <h3 className="card-title">
-                {project.title}
-              </h3>
-              <p className="text-gray-400 text-sm mb-6 leading-relaxed">{project.description}</p>
-              <div className="flex flex-wrap gap-2">
-                {project.technologies.map((tech) => (
-                  <span key={tech} className="tech-pill">
-                    {tech}
-                  </span>
-                ))}
+              <h3 className="card-title">{project.title}</h3>
+              <p className="text-gray-400 text-sm mb-6 leading-relaxed">
+                {project.description}
+              </p>
+              
+              <div className="flex flex-col gap-4">
+                <div className="flex flex-wrap gap-2">
+                  {project.technologies.map((tech) => (
+                    <span key={tech} className="tech-pill">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                {/* BOTÓN AL LOGIN ACTUALIZADO */}
+                {project.hasButton && (
+                  <Link
+                    to="/login" // Usamos 'to' en lugar de 'href'
+                    className="inline-flex w-fit items-center gap-2 px-4 py-2 rounded-lg bg-secondary/10 text-secondary text-sm font-medium border border-secondary/50 hover:bg-secondary hover:text-black hover:border-secondary transition-all duration-300"
+                  >
+                    Acceso Restringido
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                    </svg>
+                  </Link>
+                )}
               </div>
             </div>
             <div className="card-hover-gradient" />
           </div>
         ))}
       </div>
-
-      {/* <div className="mt-12 text-center">
-        <a href="#" className="btn-outline">
-          Ver todos los proyectos
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
-        </a>
-      </div> */}
     </section>
   );
 };
