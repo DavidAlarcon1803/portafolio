@@ -23,17 +23,17 @@ const Navbar = () => {
         {/* ENLACES SOCIALES */}
         <div className="social-nav">
           <SocialLink 
-            href="https://wa.me/573000000000" 
+            href="https://wa.me/573022977847" 
             icon={<MessageCircle size={20} />} 
             label="WhatsApp" 
           />
           <SocialLink 
-            href="https://linkedin.com/in/tu-usuario" 
+            href="www.linkedin.com/in/efren-david-alarcón-muñoz-948377242" 
             icon={<Linkedin size={20} />} 
             label="LinkedIn" 
           />
           <SocialLink 
-            href="mailto:tu@correo.com" 
+            href="efrendavidalarconmunoz@gmail.com" 
             icon={<Mail size={20} />} 
             label="Correo" 
           />
