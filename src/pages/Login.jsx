@@ -43,11 +43,8 @@ export default function Login() {
       // Guardamos el token en localStorage para usarlo en otras peticiones
       localStorage.setItem('token', data.access_token);
       
-      // Opcional: Mostrar éxito brevemente
-      alert("¡Login Exitoso! Token recibido.");
-      
       // 4. Redirigir al usuario (por ejemplo, al Home o a un Dashboard)
-      navigate("/");
+      navigate("/dashboard");
 
     } catch (err) {
       console.error(err);
