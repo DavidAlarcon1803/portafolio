@@ -6,3 +6,37 @@ body {
   margin: 0;
   font-family: system-ui, -apple-system, sans-serif;
 }
+
+/* --- PERSONALIZACIÓN DEL SCROLLBAR (ESTILO CYBERPUNK) --- */
+
+/* Ancho de la barra */
+::-webkit-scrollbar {
+  width: 10px; /* Un poco más ancho para que sea cómodo */
+  height: 10px; /* Para scroll horizontal si lo hubiera */
+}
+
+/* El "carril" o fondo de la barra */
+::-webkit-scrollbar-track {
+  background: #050505; /* Tu color de fondo (Primary) */
+  border-left: 1px solid rgba(255, 255, 255, 0.05); /* Línea sutil separadora */
+}
+
+/* El "pulgar" o parte que se mueve */
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2); /* Gris translúcido por defecto (discreto) */
+  border-radius: 5px; /* Bordes redondeados */
+  border: 2px solid #050505; /* Un pequeño borde negro para que parezca flotar */
+  transition: all 0.3s ease;
+}
+
+/* Efecto al pasar el mouse por encima de la barra */
+::-webkit-scrollbar-thumb:hover {
+  background: #00ff99; /* ¡TU VERDE NEÓN! */
+  box-shadow: 0 0 10px rgba(0, 255, 153, 0.5); /* Resplandor verde */
+}
+
+/* Firefox (Soporte básico) */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) #050505;
+}
