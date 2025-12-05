@@ -3,7 +3,12 @@
 /* --- ESTILOS DEL NAVBAR --- */
 
 .navbar-container {
-  @apply fixed top-0 left-0 w-full z-50 bg-primary/90 backdrop-blur-md border-b border-white/10;
+  /* Usamos @apply para utilidades estándar de Tailwind (layout, posición) */
+  @apply fixed top-0 left-0 w-full z-50 border-b border-white/10;
+  
+  /* Usamos CSS normal para los colores para evitar errores de compilación */
+  background-color: rgba(5, 5, 5, 0.9); /* Esto es tu color 'primary' con transparencia */
+  backdrop-filter: blur(12px);          /* Efecto borroso (backdrop-blur-md) */
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
 }
 
@@ -29,8 +34,9 @@
 }
 
 .brand-highlight {
-  @apply text-secondary ml-1;
-  /* Efecto resplandor */
+  /* Usamos el código hexadecimal directo para el verde neón */
+  color: #00ff99; 
+  margin-left: 0.25rem;
   filter: drop-shadow(0 0 8px rgba(0, 255, 153, 0.4));
 }
 
@@ -45,6 +51,10 @@
 
 .social-link {
   @apply flex items-center gap-3 transition-transform duration-300;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
 }
 
 .social-link:hover {
@@ -55,12 +65,14 @@
 .icon-box {
   @apply flex items-center justify-center w-10 h-10 rounded-full 
          bg-white/5 border border-white/10 text-gray-400
-         transition-all duration-300 backdrop-blur-sm;
+         transition-all duration-300;
 }
 
-/* Efectos hover global para los iconos */
+/* Efectos hover manuales para asegurar compatibilidad */
 .social-link:hover .icon-box {
-  @apply bg-secondary/10 border-secondary text-secondary;
+  background-color: rgba(0, 255, 153, 0.1); /* Verde secundario transparente */
+  border-color: #00ff99;
+  color: #00ff99;
   box-shadow: 0 0 15px rgba(0, 255, 153, 0.3);
 }
 
@@ -69,31 +81,31 @@
 }
 
 .social-link:hover .link-text {
-  @apply text-secondary;
+  color: #00ff99;
 }
 
-/* --- POPUP DE CONFIRMACIÓN (NUEVO) --- */
+/* --- POPUP DE CONFIRMACIÓN --- */
 .copy-popup {
   position: absolute;
-  top: 140%; /* Se ubica debajo del botón */
+  top: 140%;
   left: 50%;
-  transform: translateX(-50%); /* Centrado exacto */
-  
+  transform: translateX(-50%);
   white-space: nowrap;
-  background-color: #00ff99; /* Fondo Verde */
-  color: #050505; /* Texto Negro */
+  
+  background-color: #00ff99; /* Verde neón */
+  color: #050505;            /* Negro primario */
   
   font-size: 0.75rem;
   font-weight: 700;
   padding: 6px 12px;
   border-radius: 6px;
-  
   box-shadow: 0 4px 12px rgba(0, 255, 153, 0.3);
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Animación elástica */
+  transition: all 0.3s ease;
   z-index: 60;
+  pointer-events: none; /* Para que no estorbe */
 }
 
-/* Triangulito del popup apuntando hacia arriba */
+/* Triángulo del popup */
 .copy-popup::before {
   content: '';
   position: absolute;
