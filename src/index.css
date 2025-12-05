@@ -1,42 +1,57 @@
 @import "tailwindcss";
 
-body {
-  background-color: #050505;
-  color: #ffffff;
-  margin: 0;
-  font-family: system-ui, -apple-system, sans-serif;
+@layer base {
+  :root {
+    /* --- TU PALETA DE COLORES RE-MAPEDA --- */
+    
+    /* Fondo y Texto */
+    --background: 0 0% 2%;      /* #050505 (Tu negro profundo) */
+    --foreground: 0 0% 100%;    /* #ffffff */
+
+    /* Color Principal (Tu Verde Neón #00ff99) */
+    /* HSL aproximado: 156, 100%, 50% */
+    --primary: 156 100% 50%;
+    --primary-foreground: 0 0% 0%; /* Texto negro sobre el verde */
+
+    /* Elementos secundarios (Tarjetas, bordes) */
+    --card: 0 0% 4%;            /* Un poco más claro que el fondo */
+    --card-foreground: 0 0% 100%;
+    
+    --popover: 0 0% 4%;
+    --popover-foreground: 0 0% 100%;
+
+    --secondary: 156 100% 50%;
+    --secondary-foreground: 0 0% 0%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 156 100% 50%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Bordes sutiles */
+    --border: 0 0% 20%; 
+    --input: 0 0% 20%;
+    --ring: 156 100% 50%; /* El anillo de enfoque será verde */
+
+    --radius: 0.5rem;
+  }
 }
 
-/* --- PERSONALIZACIÓN DEL SCROLLBAR (ESTILO CYBERPUNK) --- */
-
-/* Ancho de la barra */
-::-webkit-scrollbar {
-  width: 10px; /* Un poco más ancho para que sea cómodo */
-  height: 10px; /* Para scroll horizontal si lo hubiera */
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
 
-/* El "carril" o fondo de la barra */
-::-webkit-scrollbar-track {
-  background: #050505; /* Tu color de fondo (Primary) */
-  border-left: 1px solid rgba(255, 255, 255, 0.05); /* Línea sutil separadora */
-}
-
-/* El "pulgar" o parte que se mueve */
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2); /* Gris translúcido por defecto (discreto) */
-  border-radius: 5px; /* Bordes redondeados */
-  border: 2px solid #050505; /* Un pequeño borde negro para que parezca flotar */
-  transition: all 0.3s ease;
-}
-
-/* Efecto al pasar el mouse por encima de la barra */
-::-webkit-scrollbar-thumb:hover {
-  background: #00ff99; /* ¡TU VERDE NEÓN! */
-  box-shadow: 0 0 10px rgba(0, 255, 153, 0.5); /* Resplandor verde */
-}
-
-/* Firefox (Soporte básico) */
-html {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.2) #050505;
-}
+/* --- TU SCROLLBAR PERSONALIZADO (SE MANTIENE) --- */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #050505; border-left: 1px solid rgba(255, 255, 255, 0.05); }
+::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 5px; border: 2px solid #050505; transition: all 0.3s ease; }
+::-webkit-scrollbar-thumb:hover { background: #00ff99; box-shadow: 0 0 10px rgba(0, 255, 153, 0.5); }
