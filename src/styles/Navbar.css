@@ -1,21 +1,16 @@
-@import "tailwindcss";
-
-/* DEFINICIÓN DEL TEMA PARA ESTE ARCHIVO */
-@theme {
-  --color-primary: #050505;
-  --color-secondary: #00ff99;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* --- ESTILOS DEL NAVBAR --- */
 
 .navbar-container {
-  /* Ahora 'bg-primary/80' funcionará porque definimos el color arriba */
-  @apply fixed top-0 left-0 w-full z-50 bg-primary/80 backdrop-blur-md border-b border-white/20;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  @apply fixed top-0 left-0 w-full z-50 bg-primary/90 backdrop-blur-md border-b border-white/10;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
 }
 
 .navbar-content {
-  @apply max-w-7xl mx-auto px-6 h-20 flex justify-between items-center;
+  @apply max-w-7xl mx-auto px-6 h-24 flex justify-between items-center;
 }
 
 /* --- LOGO Y TÍTULO --- */
@@ -24,7 +19,7 @@
 }
 
 .brand-group:hover .brand-title {
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
 .brand-group:hover .brand-subtitle {
@@ -32,22 +27,22 @@
 }
 
 .brand-title {
-  @apply text-3xl md:text-4xl font-extrabold tracking-tight text-white leading-none transition-all duration-300;
+  @apply text-2xl md:text-3xl font-extrabold tracking-tight text-white leading-none transition-all duration-300;
 }
 
 .brand-highlight {
-  @apply text-secondary ml-2;
-  /* Efecto glow personalizado */
-  filter: drop-shadow(0 0 15px rgba(0, 255, 153, 0.6));
+  @apply text-secondary ml-1;
+  /* Efecto resplandor */
+  filter: drop-shadow(0 0 8px rgba(0, 255, 153, 0.4));
 }
 
 .brand-subtitle {
-  @apply text-[10px] md:text-[11px] font-medium text-gray-500 tracking-[0.3em] uppercase mt-1 ml-1 transition-colors;
+  @apply text-[10px] md:text-[11px] font-medium text-gray-500 tracking-[0.3em] uppercase mt-2 ml-1 transition-colors;
 }
 
 /* --- ENLACES SOCIALES --- */
 .social-nav {
-  @apply flex items-center gap-5;
+  @apply flex items-center gap-4 md:gap-6;
 }
 
 .social-link {
@@ -55,23 +50,59 @@
 }
 
 .social-link:hover {
-  transform: translateY(-4px);
+  transform: translateY(-3px);
 }
 
 /* Círculo del icono */
 .icon-box {
   @apply flex items-center justify-center w-10 h-10 rounded-full 
-         bg-white/5 border border-white/10
-         text-green-500
+         bg-white/5 border border-white/10 text-gray-400
          transition-all duration-300 backdrop-blur-sm;
 }
 
-/* Efectos hover */
+/* Efectos hover global para los iconos */
 .social-link:hover .icon-box {
-  @apply bg-green-500/10 border-green-500;
-  filter: drop-shadow(0 0 10px rgba(34, 197, 94, 0.5));
+  @apply bg-secondary/10 border-secondary text-secondary;
+  box-shadow: 0 0 15px rgba(0, 255, 153, 0.3);
 }
 
 .link-text {
-  @apply hidden md:block text-sm font-medium text-white tracking-wide;
+  @apply hidden md:block text-sm font-medium text-gray-300 tracking-wide transition-colors;
+}
+
+.social-link:hover .link-text {
+  @apply text-secondary;
+}
+
+/* --- POPUP DE CONFIRMACIÓN (NUEVO) --- */
+.copy-popup {
+  position: absolute;
+  top: 140%; /* Se ubica debajo del botón */
+  left: 50%;
+  transform: translateX(-50%); /* Centrado exacto */
+  
+  white-space: nowrap;
+  background-color: #00ff99; /* Fondo Verde */
+  color: #050505; /* Texto Negro */
+  
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 6px;
+  
+  box-shadow: 0 4px 12px rgba(0, 255, 153, 0.3);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Animación elástica */
+  z-index: 60;
+}
+
+/* Triangulito del popup apuntando hacia arriba */
+.copy-popup::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  margin-left: -4px;
+  border-width: 0 4px 4px;
+  border-style: solid;
+  border-color: transparent transparent #00ff99 transparent;
 }
