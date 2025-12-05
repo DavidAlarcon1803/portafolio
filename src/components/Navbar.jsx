@@ -22,18 +22,23 @@ const Navbar = () => {
 
         {/* ENLACES SOCIALES */}
         <div className="social-nav">
+          {/* WhatsApp ya estaba bien, tiene https:// */}
           <SocialLink 
             href="https://wa.me/573022977847" 
             icon={<MessageCircle size={20} />} 
             label="WhatsApp" 
           />
+          
+          {/* CORREGIDO: Agregado https:// al inicio */}
           <SocialLink 
-            href="www.linkedin.com/in/efren-david-alarcón-muñoz-948377242" 
+            href="https://www.linkedin.com/in/efren-david-alarcón-muñoz-948377242" 
             icon={<Linkedin size={20} />} 
             label="LinkedIn" 
           />
+          
+          {/* CORREGIDO: Agregado mailto: al inicio */}
           <SocialLink 
-            href="efrendavidalarconmunoz@gmail.com" 
+            href="mailto:efrendavidalarconmunoz@gmail.com" 
             icon={<Mail size={20} />} 
             label="Correo" 
           />
