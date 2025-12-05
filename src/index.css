@@ -40,10 +40,13 @@
 
 @layer base {
   * {
-    @apply border-border; /* Esta es la línea que fallaba */
+    /* CORRECCIÓN: Usamos CSS estándar en lugar de @apply border-border */
+    border-color: hsl(var(--border));
   }
   body {
-    @apply bg-background text-foreground;
+    /* CORRECCIÓN: Usamos CSS estándar para asegurar que tome las variables */
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
   }
 }
 
