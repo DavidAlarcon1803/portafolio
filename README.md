@@ -1,7 +1,5 @@
 # Portafolio Profesional & Sistema de Gestión (React + Vite)
 
-![Project Banner](https://via.placeholder.com/1200x400?text=Efren+David+Alarcon+-+Full+Stack+Developer)
-
 ## 📋 Descripción del Proyecto
 
 Este proyecto es una aplicación web moderna desarrollada con **React** y **Vite**, diseñada con un doble propósito:
