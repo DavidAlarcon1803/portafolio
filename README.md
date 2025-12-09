@@ -1,16 +1,74 @@
-# React + Vite
+# Portafolio Profesional & Sistema de Gestión (React + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Project Banner](https://via.placeholder.com/1200x400?text=Efren+David+Alarcon+-+Full+Stack+Developer)
 
-Currently, two official plugins are available:
+## 📋 Descripción del Proyecto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Este proyecto es una aplicación web moderna desarrollada con **React** y **Vite**, diseñada con un doble propósito:
+1.  Presentar una marca personal sólida a través de un **Portafolio Interactivo** con diseño de alto impacto.
+2.  Demostrar capacidades técnicas avanzadas mediante un **Panel Administrativo (Dashboard)** funcional conectado a una API Backend.
 
-## React Compiler
+La aplicación destaca por su diseño "Dark Neon", animaciones fluidas y una arquitectura limpia orientada a componentes, integrando consumo de APIs RESTful y seguridad basada en tokens.
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+## 🚀 Objetivo
 
-## Expanding the ESLint configuration
+El objetivo principal es exhibir la versatilidad del perfil **Full Stack**, mostrando no solo habilidades de maquetación y diseño UI/UX, sino también la capacidad de implementar lógica de negocio compleja, autenticación y gestión de estado en el cliente conectada a servicios reales.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ✨ Características Principales
+
+### 🌐 Módulo Público (Portafolio)
+* **Diseño Responsivo & Moderno:** Estética oscura con acentos en verde neón (#00ff99), efectos de *glassmorphism* (backdrop-blur) y degradados.
+* **Secciones Informativas:**
+    * **Hero:** Presentación con efectos visuales y descarga de CV/Contacto.
+    * **Tecnologías:** Visualización de stack técnico (Frontend, Backend, Herramientas) con niveles de dominio.
+    * **Experiencia:** Línea de tiempo (Timeline) interactiva detallando trayectoria laboral.
+    * **Servicios & Proyectos:** Tarjetas con efectos hover y enlaces a demos.
+* **Navegación:** Barra de navegación *sticky* con enlaces sociales y funcionalidad de "Copiar Correo" al portapapeles.
+
+### 🔐 Módulo Privado (Dashboard de Administración)
+* **Autenticación Segura:**
+    * Sistema de Login conectado a API Backend (compatible con OAuth2 Password Flow).
+    * Manejo de errores y estados de carga (Loading spinners).
+    * Almacenamiento seguro de Token de acceso.
+* **Gestión de Usuarios (UsersManager):**
+    * Tabla interactiva para visualizar usuarios registrados en el sistema.
+    * **Control de Roles:** Funcionalidad para promover/degradar usuarios (Admin <-> User) en tiempo real.
+    * **Sistema de Baneo:** Capacidad para desactivar/banear usuarios directamente desde la interfaz.
+    * Indicadores visuales de estado (Activo/Inactivo, Admin/User).
+
+## 🛠️ Stack Tecnológico
+
+**Frontend:**
+* ![React](https://img.shields.io/badge/React-18-blue?logo=react) **React.js**: Librería principal de UI.
+* ![Vite](https://img.shields.io/badge/Vite-Build-purple?logo=vite) **Vite**: Entorno de desarrollo y empaquetador ultrarrápido.
+* ![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC?logo=tailwind-css) **Tailwind CSS**: Framework de estilos utilitarios.
+* **React Router DOM**: Manejo de rutas y navegación SPA.
+* **Lucide React**: Librería de iconos vectoriales ligeros.
+
+**Integración Backend (Simulada/Conectada):**
+* **Fetch API**: Consumo de endpoints REST (`/auth/token`, `/users`).
+* **JWT**: Manejo de sesiones mediante JSON Web Tokens.
+
+## 📂 Estructura del Proyecto
+
+```bash
+src/
+├── assets/             # Recursos estáticos (imágenes, svgs)
+├── components/         # Componentes reutilizables
+│   ├── ui/             # Componentes base (Botones, Tablas)
+│   ├── Navbar.jsx      # Navegación principal
+│   ├── ExperienceTimeline.jsx
+│   ├── ProjectsSection.jsx
+│   └── ...
+├── lib/                # Utilidades (cn, helpers de clases)
+├── pages/              # Páginas / Vistas
+│   ├── dashboard/      # Vistas privadas
+│   │   └── UsersManager.jsx
+│   ├── Home.jsx        # Landing Page
+│   └── Login.jsx       # Vista de Autenticación
+├── styles/             # Archivos CSS modulares y globales
+│   ├── Navbar.css
+│   ├── Profile.css
+│   └── Sections.css
+├── App.jsx             # Configuración de Rutas
+└── main.jsx            # Punto de entrada
