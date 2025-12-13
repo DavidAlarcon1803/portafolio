@@ -7,28 +7,28 @@ const ServicesSection = () => {
       id: 1,
       title: "Automatización y Bots",
       description: "Optimización de flujos de trabajo mediante el desarrollo de bots inteligentes y scripts de automatización para reducir tareas repetitivas.",
-      icon: "🤖", // Icono ajustado a Bots
+      icon: "🤖",
       features: ["Bots en Python/JS", "Optimización de Procesos", "Integración de Servicios", "Eficiencia Operativa"],
     },
     {
       id: 2,
       title: "Desarrollo Backend & APIs",
       description: "Diseño y construcción de APIs RESTful robustas y seguras, enfocadas en el alto rendimiento y la escalabilidad de datos.",
-      icon: "⚙️", // Icono ajustado a Backend
+      icon: "⚙️",
       features: ["FastAPI & Django", "PostgreSQL / MySQL", "Endpoints Eficientes", "RabbitMQ"],
     },
     {
       id: 3,
       title: "Soluciones Full Stack Cloud",
       description: "Integración completa de interfaces modernas en React con lógica de servidor potente y despliegue en infraestructura nube.",
-      icon: "☁️", // Icono ajustado a Cloud/Fullstack
+      icon: "☁️",
       features: ["React & Integraciones", "Microsoft Azure", "Docker & Contenedores", "SSO Microsoft"],
     },
     {
       id: 4,
       title: "Análisis y Documentación",
       description: "Levantamiento de requerimientos y documentación técnica detallada para asegurar la calidad y mantenibilidad del software.",
-      icon: "📝", // Icono ajustado a Documentación
+      icon: "📝",
       features: ["Análisis Funcional", "Documentación Técnica", "Soporte & Mantenimiento", "Calidad de Código"],
     },
   ];
@@ -50,14 +50,13 @@ const ServicesSection = () => {
         {services.map((service) => (
           <div key={service.id} className="neon-card">
             <div className="p-8">
-              {/* USAMOS LAS NUEVAS CLASES AQUÍ */}
               <div className="card-icon">
                 {service.icon}
               </div>
               <h3 className="card-title">
                 {service.title}
               </h3>
-              
+
               <p className="text-gray-400 text-sm mb-6 leading-relaxed">{service.description}</p>
               <div className="space-y-2">
                 {service.features.map((feature) => (
