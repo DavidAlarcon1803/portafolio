@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/Profile.css"; // Importamos los estilos
+import "../styles/Profile.css";
 
 export default function ProfileDescription() {
   const techs = [
