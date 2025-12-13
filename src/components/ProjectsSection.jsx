@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom"; // <--- IMPORTANTE: Importar Link
+import { Link } from "react-router-dom";
 import "../styles/Sections.css";
 
 const ProjectsSection = () => {
@@ -9,14 +9,12 @@ const ProjectsSection = () => {
       title: "CONFIDENCIAL",
       description: "Sistema de gestión interna con autenticación segura.",
       technologies: ["React", "Python", "Seguridad"],
-      hasButton: true, // <--- Asegúrate de poner esto en true para probar
+      hasButton: true, 
     },
-    // ... tus otros proyectos
   ];
 
   return (
     <section className="section-container">
-      {/* ... (Header igual que antes) ... */}
       <div className="section-header">
         <h2 className="section-title-wrapper">
           <span className="section-hash">#</span>
@@ -24,7 +22,6 @@ const ProjectsSection = () => {
         </h2>
         <div className="section-line"></div>
       </div>
-
       <div className="card-grid">
         {projects.map((project) => (
           <div key={project.id} className="neon-card">
@@ -42,11 +39,9 @@ const ProjectsSection = () => {
                     </span>
                   ))}
                 </div>
-
-                {/* BOTÓN AL LOGIN ACTUALIZADO */}
                 {project.hasButton && (
                   <Link
-                    to="/login" // Usamos 'to' en lugar de 'href'
+                    to="/login"
                     className="inline-flex w-fit items-center gap-2 px-4 py-2 rounded-lg bg-secondary/10 text-secondary text-sm font-medium border border-secondary/50 hover:bg-secondary hover:text-black hover:border-secondary transition-all duration-300"
                   >
                     Acceso Restringido
