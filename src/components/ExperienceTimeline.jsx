@@ -19,7 +19,6 @@ const ExperienceTimeline = () => {
       description: "En mi experiencia previa como Desarrollador Full Stack, lideré el análisis y desarrollo de soluciones técnicas integrales basadas en requerimientos funcionales. Diseñé APIs RESTful robustas utilizando Python (FastAPI) e integré funcionalidades frontend dinámicas con React. Mi trabajo incluyó el diseño y optimización de bases de datos PostgreSQL, la implementación de servicios en la nube con Microsoft Azure y la integración de sistemas externos mediante RabbitMQ. Todo esto se llevó a cabo bajo la metodología ágil Scrum, participando activamente en las ceremonias y garantizando la calidad del código mediante versionamiento con Git.",
       highlights: ["Full Stack", "Diseño de BD", "Integración de APIs", "Optimización"],
     },
-
   ];
 
   return (
@@ -31,20 +30,14 @@ const ExperienceTimeline = () => {
         </h2>
         <div className="section-line"></div>
       </div>
-
       <div className="timeline-wrapper">
-        {/* Línea vertical central */}
         <div className="timeline-line"></div>
-
         <div className="space-y-12">
           {experiences.map((exp, index) => (
             <div key={exp.id} className="timeline-item">
-              {/* Punto del timeline */}
               <div className="timeline-dot">
                 <div className="timeline-inner-dot"></div>
               </div>
-
-              {/* Tarjeta de contenido (alterna izq/der) */}
               <div className={`timeline-content ${index % 2 === 0 ? "timeline-left" : "timeline-right"}`}>
                 <div className="neon-card p-6">
                   <div className="mb-4">
