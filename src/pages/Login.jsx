@@ -1,16 +1,13 @@
-// src/pages/Login.jsx
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom"; // Importamos useNavigate
+import { Link, useNavigate } from "react-router-dom";
 import '../styles/Sections.css';
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null); // Estado para errores
-  const navigate = useNavigate(); // Hook para redirigir
-
-  // URL del Backend desde la variable de entorno
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
   const API_URL = import.meta.env.VITE_API_URL;
 
   const handleSubmit = async (e) => {
@@ -102,10 +99,7 @@ export default function Login() {
                 className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-secondary/50 focus:bg-white/10 transition-all duration-300"
                 required
               />
-            </div>
-
-            {/* ... Resto de los elementos (Recuérdame, Botón, etc) ... */}
-            
+            </div>            
             <button
               type="submit"
               disabled={isLoading}
@@ -121,7 +115,6 @@ export default function Login() {
               )}
             </button>
           </form>
-          {/* ... Resto del componente (Links sociales, volver) ... */}
            <div className="flex items-center gap-3 my-6">
             <div className="flex-1 h-px bg-white/10"></div>
             <span className="text-xs text-gray-500">o continuar con</span>
