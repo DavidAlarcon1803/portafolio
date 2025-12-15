@@ -7,7 +7,7 @@ const ProjectsSection = () => {
     {
       id: 1,
       title: "Gestor De Eventos",
-      description: "Es un pequeño proyecto en desarrollo donde quiero demostrar la experiencia con las técnicas que he trabajado. el proyecto tiene una gestión de usuarios y va a funcionar cómo una plataforma para comprar entradas a eventos.",
+      description: "Es un pequeño proyecto en desarrollo donde quiero demostrar la experiencia con las tecnologías que he trabajado. el proyecto tiene una gestión de usuarios y va a funcionar cómo una plataforma para comprar entradas a eventos.",
       technologies: ["React", "Python", "Seguridad"],
       hasButton: true, 
     },
