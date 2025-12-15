@@ -6,10 +6,14 @@ const ProjectsSection = () => {
   const projects = [
     {
       id: 1,
-      title: "Gestor De Eventos",
-      description: "Es un pequeño proyecto en desarrollo donde quiero demostrar la experiencia con las tecnologías que he trabajado. el proyecto tiene una gestión de usuarios y va a funcionar cómo una plataforma para comprar entradas a eventos se usaron varias plataformas que brindan alternativas gratuitas para poder generar el despliegue",
-      technologies: ["React", "Python", "Seguridad"],
-      hasButton: true, 
+      title: "Gestor de Eventos",
+      description: 
+        "Desarrollo de una plataforma moderna para la gestión y compra de entradas a eventos, enfocada en demostrar experiencia con tecnologías actuales.\n\n" +
+        "Cuenta con autenticación de usuarios, roles y gestión de eventos. La aplicación aprovecha plataformas gratuitas para despliegue y escalabilidad.\n\n" +
+        "Frontend: El frontend se despliega en Vercel, integrado con GitHub para automatizar despliegues.\n\n" +
+        "Backend: El backend está construido con Python y FastAPI. Se utilizan servicios gratuitos como Railway para desplegar la API principal, Neon para bases de datos y CloudAMQP para servicios de mensajería (RabbitMQ).",
+      technologies: ["React", "Python", "FastAPI", "Vercel", "CloudAMQP"],
+      hasButton: true,
     },
   ];
 
