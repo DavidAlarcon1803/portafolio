@@ -31,7 +31,7 @@ const ProjectsSection = () => {
           <div key={project.id} className="neon-card">
             <div className="p-6">
               <h3 className="card-title">{project.title}</h3>
-              <p className="text-gray-400 text-sm mb-6 leading-relaxed">
+              <p className="text-gray-400 text-sm mb-6 leading-relaxed whitespace-pre-line">
                 {project.description}
               </p>
               
