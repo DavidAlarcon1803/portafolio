@@ -6,8 +6,8 @@ const ProjectsSection = () => {
   const projects = [
     {
       id: 1,
-      title: "CONFIDENCIAL",
-      description: "Sistema de gestión interna con autenticación segura.",
+      title: "Gestor De Eventos",
+      description: "Es un pequeño proyecto en desarrollo donde quiero demostrar la experiencia con las técnicas que he trabajado. el proyecto tiene una gestión de usuarios y va a funcionar cómo una plataforma para comprar entradas a eventos.",
       technologies: ["React", "Python", "Seguridad"],
       hasButton: true, 
     },
