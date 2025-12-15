@@ -48,7 +48,7 @@ const ProjectsSection = () => {
                     to="/login"
                     className="inline-flex w-fit items-center gap-2 px-4 py-2 rounded-lg bg-secondary/10 text-secondary text-sm font-medium border border-secondary/50 hover:bg-secondary hover:text-black hover:border-secondary transition-all duration-300"
                   >
-                    Acceso Restringido
+                    Ir al Proyecto.
                     <svg
                       className="w-4 h-4"
                       fill="none"
