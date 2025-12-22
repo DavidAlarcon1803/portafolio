@@ -19,14 +19,11 @@ function App() {
 
         {/* --- CONTENIDO CAMBIANTE --- */}
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          
-          {/* 2. AGREGAMOS LA NUEVA RUTA AQUÍ */}
-          <Route path="/dashboard" element={<UsersManager />} />
-          
-        </Routes>
-        
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/dashboard" element={<UsersManager />} />
+            <Route path="/profile" element={<Profile />} />
+          </Routes>
       </div>
     </BrowserRouter>
   );

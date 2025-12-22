@@ -1,133 +1,97 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import '../styles/Sections.css';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { useAuth } from '@/context/AuthContext';
+import { Button } from "@/components/ui/button";
+import { Lock, Mail, Loader2 } from "lucide-react";
 
-export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  
+  const { login } = useAuth();
   const navigate = useNavigate();
-  const API_URL = import.meta.env.VITE_API_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
     setIsLoading(true);
-    setError(null);
 
     try {
-      // 1. Crear datos de formulario (OAuth2 standard)
-      const formData = new URLSearchParams();
-      formData.append('username', email); // FastAPI espera 'username', aunque sea el email
-      formData.append('password', password);
-
-      // 2. Hacer la petición fetch real
-      const response = await fetch(`${API_URL}/auth/token`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: formData,
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.detail || "Error al iniciar sesión");
-      }
-
-      // 3. Éxito: Guardar el token
-      // Guardamos el token en localStorage para usarlo en otras peticiones
-      localStorage.setItem('token', data.access_token);
-      
-      // 4. Redirigir al usuario (por ejemplo, al Home o a un Dashboard)
-      navigate("/dashboard");
-
+      await login(email, password);
+      navigate('/dashboard');
     } catch (err) {
-      console.error(err);
-      setError("Credenciales incorrectas o error de conexión.");
+      setError(err.response?.data?.detail || 'Credenciales incorrectas');
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 pt-20 relative z-10">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-secondary/5 rounded-full blur-[120px] pointer-events-none" />
-
-      <div className="w-full max-w-md relative z-20">
+    <div className="min-h-screen bg-black flex items-center justify-center p-4">
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+      
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="w-full max-w-md bg-zinc-900/50 backdrop-blur-xl p-8 rounded-2xl border border-white/10 relative z-10 shadow-2xl"
+      >
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-white mb-2">Bienvenido</h1>
-          <p className="text-gray-400">Accede al panel de administración</p>
+          <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
+            EventScale
+          </h2>
+          <p className="text-zinc-400 mt-2">Acceso al Dashboard Administrativo</p>
         </div>
 
-        <div className="rounded-2xl bg-[#0a0a0a] border border-white/10 backdrop-blur-xl p-8 shadow-[0_0_50px_-12px_rgba(0,255,153,0.1)] hover:border-secondary/30 transition-all duration-500">
-          
-          {/* Muestra mensaje de error si existe */}
-          {error && (
-            <div className="mb-4 p-3 rounded bg-red-500/20 border border-red-500/50 text-red-200 text-sm text-center">
-              {error}
-            </div>
-          )}
+        <form onSubmit={handleSubmit} className="space-y-6">
+            {error && (
+                <div className="p-3 rounded bg-red-500/10 border border-red-500/20 text-red-400 text-sm text-center">
+                    {error}
+                </div>
+            )}
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                Correo Electrónico
-              </label>
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-zinc-300">Email</label>
+            <div className="relative">
+              <Mail className="absolute left-3 top-2.5 h-5 w-5 text-zinc-500" />
               <input
-                id="email"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="admin@ejemplo.com"
-                className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-secondary/50 focus:bg-white/10 transition-all duration-300"
+                className="w-full bg-black/50 border border-white/10 rounded-lg py-2 pl-10 pr-4 text-white focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
+                placeholder="admin@eventscale.com"
                 required
               />
             </div>
+          </div>
 
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-300 mb-2">
-                Contraseña
-              </label>
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-zinc-300">Contraseña</label>
+            <div className="relative">
+              <Lock className="absolute left-3 top-2.5 h-5 w-5 text-zinc-500" />
               <input
-                id="password"
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                className="w-full bg-black/50 border border-white/10 rounded-lg py-2 pl-10 pr-4 text-white focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
                 placeholder="••••••••"
-                className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-secondary/50 focus:bg-white/10 transition-all duration-300"
                 required
               />
-            </div>            
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="w-full py-3 px-4 rounded-lg bg-secondary text-black font-bold hover:bg-[#00cc7a] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 transform active:scale-[0.98]"
-            >
-              {isLoading ? (
-                <>
-                  <div className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin"></div>
-                  Conectando...
-                </>
-              ) : (
-                "Ingresar al Sistema"
-              )}
-            </button>
-          </form>
-           <div className="flex items-center gap-3 my-6">
-            <div className="flex-1 h-px bg-white/10"></div>
-            <span className="text-xs text-gray-500">o continuar con</span>
-            <div className="flex-1 h-px bg-white/10"></div>
+            </div>
           </div>
-           {/* Back to Home Link */}
-           <div className="text-center mt-8">
-            <Link to="/" className="text-gray-500 hover:text-secondary text-sm transition-colors flex items-center justify-center gap-2">
-              ← Volver al portafolio
-            </Link>
-          </div>
-        </div>
-      </div>
+
+          <Button 
+            className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold h-11"
+            disabled={isLoading}
+          >
+            {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : 'Ingresar'}
+          </Button>
+        </form>
+      </motion.div>
     </div>
   );
-}
+};
+
+export default Login;
