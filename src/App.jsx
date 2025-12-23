@@ -1,10 +1,22 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-// 1. IMPORTAMOS EL COMPONENTE DE USUARIOS
-import UsersManager from "./pages/dashboard/UsersManager";
+import { AuthProvider, useAuth } from "@/context/AuthContext";
+import Navbar from "@/components/Navbar";
+import Home from "@/pages/Home";
+import Login from "@/pages/Login";
+import UsersManager from "@/pages/dashboard/UsersManager";
+import Profile from "@/pages/dashboard/Profile";
+import "./App.css";
+
+// Componente para proteger rutas (debe estar declarado antes de usarse)
+const ProtectedRoute = ({ children }) => {
+  const { user, loading } = useAuth();
+
+  if (loading) return <div></div>; // El spinner del AuthProvider se encarga, esto es solo por seguridad
+  if (!user) return <Navigate to="/login" replace />;
+
+  return children;
+};
 
 function App() {
   return (
