@@ -21,9 +21,17 @@ const UsersManager = () => {
     try {
       const params = search ? { search } : {};
       const response = await api.get("/users/", { params });
-      setUsers(response.data);
+
+      // ✅ VERIFICACIÓN DE SEGURIDAD
+      if (Array.isArray(response.data)) {
+        setUsers(response.data);
+      } else {
+        console.error("Datos inesperados:", response.data);
+        setUsers([]);
+      }
     } catch (error) {
       console.error("Error fetching users:", error);
+      // Opcional: Mostrar notificación de error
     } finally {
       setLoading(false);
     }
@@ -65,7 +73,7 @@ const UsersManager = () => {
             </h1>
             <p className="text-zinc-400">Administra accesos y permisos de la plataforma</p>
           </div>
-          
+
           <div className="relative w-full md:w-96">
             <Search className="absolute left-3 top-2.5 h-4 w-4 text-zinc-500" />
             <input
@@ -92,9 +100,15 @@ const UsersManager = () => {
             <TableBody>
               {loading ? (
                 <TableRow>
-                    <TableCell colSpan={5} className="h-24 text-center text-zinc-500">
-                        Cargando usuarios...
-                    </TableCell>
+                  <TableCell colSpan={5} className="h-24 text-center text-zinc-500">
+                    Cargando usuarios...
+                  </TableCell>
+                </TableRow>
+              ) : users.length === 0 ? (
+                <TableRow>
+                  <TableCell colSpan={5} className="h-24 text-center text-zinc-500">
+                    No se encontraron usuarios
+                  </TableCell>
                 </TableRow>
               ) : users.map((user) => (
                 <TableRow key={user.id} className="border-zinc-800 hover:bg-zinc-900/50">
@@ -108,21 +122,19 @@ const UsersManager = () => {
                     {user.phone_number || "-"}
                   </TableCell>
                   <TableCell>
-                    <span className={`inline-flex items-center px-2 py-1 rounded-md text-xs font-medium ${
-                      user.role === 'admin' 
-                        ? 'bg-purple-500/10 text-purple-400 border border-purple-500/20' 
+                    <span className={`inline-flex items-center px-2 py-1 rounded-md text-xs font-medium ${user.role === 'admin'
+                        ? 'bg-purple-500/10 text-purple-400 border border-purple-500/20'
                         : 'bg-blue-500/10 text-blue-400 border border-blue-500/20'
-                    }`}>
+                      }`}>
                       {user.role === 'admin' && <ShieldAlert className="w-3 h-3 mr-1" />}
                       {user.role}
                     </span>
                   </TableCell>
                   <TableCell>
-                     <span className={`inline-flex items-center px-2 py-1 rounded-md text-xs font-medium ${
-                      user.is_active 
-                        ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' 
+                    <span className={`inline-flex items-center px-2 py-1 rounded-md text-xs font-medium ${user.is_active
+                        ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
                         : 'bg-red-500/10 text-red-400 border border-red-500/20'
-                    }`}>
+                      }`}>
                       {user.is_active ? 'Activo' : 'Inactivo'}
                     </span>
                   </TableCell>
